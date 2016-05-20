@@ -17,5 +17,20 @@ class SlideoutController {
   constructor () {
     'ngInject';
 
+    this.menuItems = [
+      {
+        title: 'Employees',
+        icon: 'fa-users'
+      },
+      {
+        title: 'Issues',
+        icon: 'fa-tasks'
+      },
+      {
+        title: 'Analytics',
+        icon: 'fa-bar-chart'
+      }
+    ]
+
   }
 }
