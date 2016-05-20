@@ -5,6 +5,7 @@ import {MainController} from './main/main.controller';
 import {GithubContributorService} from '../app/components/githubContributor/githubContributor.service';
 import {WebDevTecService} from '../app/components/webDevTec/webDevTec.service';
 import {StatusbarDirective} from '../app/components/statusbar/statusbar.js';
+import {SlideoutDirective} from '../app/components/slideoutMenu/slideout.js';
 
 angular.module('dashboard',
   [
@@ -24,4 +25,5 @@ angular.module('dashboard',
   .service('githubContributor', GithubContributorService)
   .service('webDevTec', WebDevTecService)
   .controller('MainController', MainController)
-  .directive('statusBar', StatusbarDirective);
+  .directive('statusBar', StatusbarDirective)
+  .directive('slideoutMenu', SlideoutDirective);
