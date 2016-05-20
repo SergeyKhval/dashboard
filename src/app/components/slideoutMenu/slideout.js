@@ -6,8 +6,7 @@ export function SlideoutDirective() {
     templateUrl: 'app/components/slideoutMenu/slideout.html',
     replace: true,
     controller: SlideoutController,
-    controllerAs: 'vm',
-    bindToController: true
+    controllerAs: 'vm'
   };
 
   return directive;

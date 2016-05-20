@@ -25,5 +25,5 @@ angular.module('dashboard',
   .service('githubContributor', GithubContributorService)
   .service('webDevTec', WebDevTecService)
   .controller('MainController', MainController)
-  .directive('statusBar', StatusbarDirective)
-  .directive('slideoutMenu', SlideoutDirective);
+  .directive('slideoutMenu', SlideoutDirective)
+  .directive('statusBar', StatusbarDirective);
