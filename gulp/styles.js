@@ -22,7 +22,8 @@ gulp.task('styles', function() {
 
 var buildStyles = function() {
   var sassOptions = {
-    style: 'expanded'
+    style: 'expanded',
+    includePaths: ['./bower_components', './bower_components/bootstrap-sass/assets/stylesheets']
   };
 
   var injectFiles = gulp.src([

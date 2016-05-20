@@ -1,5 +1,3 @@
-/* global malarkey:false, moment:false */
-
 import { config } from './index.config';
 import { routerConfig } from './index.route';
 import { runBlock } from './index.run';
@@ -15,4 +13,4 @@ angular.module('dashboard', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', 
   .service('githubContributor', GithubContributorService)
   .service('webDevTec', WebDevTecService)
   .controller('MainController', MainController)
-  .directive('acmeNavbar', NavbarDirective)
+  .directive('acmeNavbar', NavbarDirective);
