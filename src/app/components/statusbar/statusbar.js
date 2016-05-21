@@ -6,7 +6,7 @@ export function StatusbarDirective() {
     templateUrl: 'app/components/statusbar/statusbar.html',
     replace: true,
     controller: StatusbarController,
-    controllerAs: 'vm',
+    controllerAs: 'sb',
     bindToController: true
   };
 
@@ -14,8 +14,16 @@ export function StatusbarDirective() {
 }
 
 class StatusbarController {
-  constructor () {
+  constructor ($scope) {
     'ngInject';
 
+    this.slideoutVisible = false;
+    this.$scope = $scope;
+
+  }
+
+  toggleSlideOutMenu(){
+    this.slideoutVisible = !this.slideoutVisible;
+    this.$scope.$emit('slideout', this.slideoutVisible);
   }
 }

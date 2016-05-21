@@ -1,10 +1,12 @@
-<div class="slideout-container slideout-container_active">
+<div class="slideout-container" ng-class="{'slideout-container_active': so.slideOutVisible}">
+
   <ul class="slideout-menu list-unstyled">
 
-    <li ng-repeat="item in vm.menuItems" class="slideout-menu__item slideout-item withripple">
+    <li ng-repeat="item in so.menuItems" class="slideout-menu__item slideout-item withripple">
       <i class="slideout-item__icon fa {{item.icon}}" aria-hidden="true"></i>
       <span class="slideout-item__title">{{item.title}}</span>
     </li>
 
   </ul>
+
 </div>

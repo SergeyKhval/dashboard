@@ -4,16 +4,15 @@ export function SlideoutDirective() {
   let directive = {
     restrict: 'E',
     templateUrl: 'app/components/slideoutMenu/slideout.html',
-    replace: true,
     controller: SlideoutController,
-    controllerAs: 'vm'
+    controllerAs: 'so'
   };
 
   return directive;
 }
 
 class SlideoutController {
-  constructor () {
+  constructor($scope) {
     'ngInject';
 
     this.menuItems = [
@@ -29,7 +28,13 @@ class SlideoutController {
         title: 'Analytics',
         icon: 'fa-bar-chart'
       }
-    ]
+    ];
+
+    this.slideOutVisible = false;
+
+    $scope.$on('slideout', (e, data) => {
+      this.slideOutVisible = data;
+    })
 
   }
 }
