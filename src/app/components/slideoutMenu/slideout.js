@@ -17,16 +17,24 @@ class SlideoutController {
 
     this.menuItems = [
       {
+        title: 'Home',
+        icon: 'fa-home',
+        route: '#/'
+      },
+      {
         title: 'Employees',
-        icon: 'fa-users'
+        icon: 'fa-users',
+        route: '#/employees'
       },
       {
         title: 'Issues',
-        icon: 'fa-tasks'
+        icon: 'fa-tasks',
+        route: '#/issues'
       },
       {
         title: 'Analytics',
-        icon: 'fa-bar-chart'
+        icon: 'fa-bar-chart',
+        route: '#/analytics'
       }
     ];
 
@@ -34,7 +42,6 @@ class SlideoutController {
 
     $scope.$on('slideout', (e, data) => {
       this.slideOutVisible = data;
-    })
-
+    });
   }
 }

@@ -3,8 +3,10 @@
   <ul class="slideout-menu list-unstyled">
 
     <li ng-repeat="item in so.menuItems" class="slideout-menu__item slideout-item withripple">
-      <i class="slideout-item__icon fa {{item.icon}}" aria-hidden="true"></i>
-      <span class="slideout-item__title">{{item.title}}</span>
+      <a ng-href="{{item.route}}">
+        <i class="slideout-item__icon fa {{item.icon}}" aria-hidden="true"></i>
+        <span class="slideout-item__title">{{item.title}}</span>
+      </a>
     </li>
 
   </ul>

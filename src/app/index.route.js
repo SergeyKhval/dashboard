@@ -1,4 +1,4 @@
-export function routerConfig ($routeProvider) {
+export function routerConfig($routeProvider) {
   'ngInject';
   $routeProvider
     .when('/', {
@@ -6,7 +6,7 @@ export function routerConfig ($routeProvider) {
       controller: 'MainController',
       controllerAs: 'main'
     })
-    .when('/employess', {
+    .when('/employees', {
       templateUrl: 'app/employees/employees.html',
       controller: 'EmployeesController',
       controllerAs: 'employees'
