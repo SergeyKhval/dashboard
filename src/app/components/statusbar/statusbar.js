@@ -14,16 +14,20 @@ export function StatusbarDirective() {
 }
 
 class StatusbarController {
-  constructor ($scope) {
+  constructor($scope) {
     'ngInject';
 
     this.slideoutVisible = false;
     this.$scope = $scope;
 
+    $scope.$on('slideout', (e, data) => {
+      this.slideoutVisible = data;
+    })
   }
 
-  toggleSlideOutMenu(){
+  toggleSlideOutMenu() {
     this.slideoutVisible = !this.slideoutVisible;
     this.$scope.$emit('slideout', this.slideoutVisible);
   }
+
 }
