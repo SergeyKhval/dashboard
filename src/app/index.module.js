@@ -18,7 +18,7 @@ angular.module('dashboard',
     'ngAria',
     'ngRoute',
     'ui.bootstrap',
-    'toastr'
+    'angularfire'
   ])
   .config(config)
   .config(routerConfig)
