@@ -1,1 +1,25 @@
-<p class="text-center">employees</p>
+<script type="text/ng-template" id="myModalContent.html">
+  <div class="modal-header">
+    <h3 class="modal-title">I'm a modal!</h3>
+  </div>
+  <div class="modal-body">
+    <ul>
+      <li ng-repeat="item in emc.items">
+        <a href="#" ng-click="$event.preventDefault(); emc.selected.item = item">{{ item }}</a>
+      </li>
+    </ul>
+    Selected: <b>{{ emc.selected.item }}</b>
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-primary" type="button" ng-click="emc.ok()">OK</button>
+    <button class="btn btn-warning" type="button" ng-click="emc.cancel()">Cancel</button>
+  </div>
+</script>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-xs-12">
+      <button class="btn btn-primary" ng-click="employees.openAddEmployeeModal()">Add new employee</button>
+    </div>
+  </div>
+</div>
