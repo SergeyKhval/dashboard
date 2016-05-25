@@ -35,7 +35,7 @@ angular.module('dashboard',
   .directive('statusBar', StatusbarDirective);
 
 angular.module('firebase.ref', ['firebase', 'firebase.config'])
-  .factory('Ref', FirebaseRef);
+  .service('Ref', FirebaseRef);
 
 angular.module('firebase.config', [])
   .constant('FBURL', 'https://dashboard-7f32e.firebaseio.com/');

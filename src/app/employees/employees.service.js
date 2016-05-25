@@ -8,3 +8,5 @@ export class EmployeesService {
     return this.$firebaseArray(this.employeesRef).$add(employee);
   }
 }
+
+EmployeesService.$inject = ['Ref', '$firebaseArray'];
