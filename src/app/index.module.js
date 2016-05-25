@@ -8,6 +8,7 @@ import {IssuesController} from './issues/issues.controller';
 import {AnalyticsController} from './analytics/analytics.controller';
 import {StatusbarDirective} from '../app/components/statusbar/statusbar.js';
 import {SlideoutDirective} from '../app/components/slideoutMenu/slideout.js';
+import {FirebaseRef} from '../app/components/firebase/firebase.service';
 
 angular.module('dashboard',
   [
@@ -19,12 +20,12 @@ angular.module('dashboard',
     'ngAria',
     'ngRoute',
     'ui.bootstrap',
-    'firebase'
+    'firebase',
+    'firebase.ref'
   ])
   .config(config)
   .config(routerConfig)
   .run(runBlock)
-  .constant('Firebase', 'https://dashboard-7f32e.firebaseio.com/')
   .controller('MainController', MainController)
   .service('EmployeesService', EmployeesService)
   .controller('EmployeesController', EmployeesController)
@@ -32,3 +33,9 @@ angular.module('dashboard',
   .controller('AnalyticsController', AnalyticsController)
   .directive('slideoutMenu', SlideoutDirective)
   .directive('statusBar', StatusbarDirective);
+
+angular.module('firebase.ref', ['firebase', 'firebase.config'])
+  .factory('Ref', FirebaseRef);
+
+angular.module('firebase.config', [])
+  .constant('FBURL', 'https://dashboard-7f32e.firebaseio.com/');

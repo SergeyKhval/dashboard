@@ -1,9 +1,12 @@
+'use strict';
+
 export class EmployeesController {
   constructor($log, $uibModal) {
     'ngInject';
 
     this.$uibModal = $uibModal;
     this.$log = $log;
+
 
     this.items = ['item1', 'item2', 'item3'];
   }
@@ -13,12 +16,7 @@ export class EmployeesController {
       templateUrl: 'myModalContent.html',
       controller: EmployeesModalController,
       controllerAs: 'emc',
-      size: size,
-      resolve: {
-        items: () => {
-          return this.items;
-        }
-      }
+      size: size
     });
 
     modalInstance.result
@@ -32,18 +30,16 @@ export class EmployeesController {
 }
 
 class EmployeesModalController {
-  constructor($uibModalInstance, items) {
+  constructor($log, $uibModalInstance, EmployeesService) {
     'ngInject';
 
     this.$uibModalInstance = $uibModalInstance;
-    this.items = items;
-    this.selected = {
-      item: this.items[0]
-    };
+    this.$log = $log;
+    this.employeesService = EmployeesService;
   }
 
-  ok() {
-    this.$uibModalInstance.close(this.selected.item);
+  addNewEmployee(employee) {
+    this.employeesService.addEmployee(employee);
   }
 
   cancel() {
