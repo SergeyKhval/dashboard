@@ -46,3 +46,5 @@ class EmployeesModalController {
     this.$uibModalInstance.dismiss('cancel');
   }
 }
+
+EmployeesModalController.$inject = ['$log', '$uibModalInstance', 'EmployeesService'];
