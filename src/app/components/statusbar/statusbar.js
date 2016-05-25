@@ -1,6 +1,7 @@
-export function StatusbarDirective() {
-  'ngInject';
+'use strict';
+const _scope = new WeakMap();
 
+export function StatusbarDirective() {
   let directive = {
     restrict: 'E',
     templateUrl: 'app/components/statusbar/statusbar.html',
@@ -15,19 +16,20 @@ export function StatusbarDirective() {
 
 class StatusbarController {
   constructor($scope) {
-    'ngInject';
+
+    _scope.set(this, $scope);
 
     this.slideoutVisible = false;
-    this.$scope = $scope;
 
-    $scope.$on('slideout', (e, data) => {
+    _scope.get(this).$on('slideout', (e, data) => {
       this.slideoutVisible = data;
     })
   }
 
   toggleSlideOutMenu() {
     this.slideoutVisible = !this.slideoutVisible;
-    this.$scope.$emit('slideout', this.slideoutVisible);
+    _scope.get(this).$emit('slideout', this.slideoutVisible);
   }
-
 }
+
+StatusbarController.$inject = ['$scope'];

@@ -1,50 +1,41 @@
 'use strict';
+const _uibModal = new WeakMap();
+const _log = new WeakMap();
+const _employeesService = new WeakMap();
+const _uibModalInstance = new WeakMap();
 
 export class EmployeesController {
   constructor($log, $uibModal) {
-    'ngInject';
-
-    this.$uibModal = $uibModal;
-    this.$log = $log;
-
-
-    this.items = ['item1', 'item2', 'item3'];
+    _uibModal.set(this, $uibModal);
+    _log.set(this, $log);
   }
 
   openAddEmployeeModal(size) {
-    let modalInstance = this.$uibModal.open({
+    _uibModal.get(this).open({
       templateUrl: 'myModalContent.html',
       controller: EmployeesModalController,
       controllerAs: 'emc',
       size: size
     });
-
-    modalInstance.result
-      .then(selectedItem => {
-        this.selected = selectedItem;
-      })
-      .catch(() => {
-        this.$log.info('Modal dismissed at: ' + new Date());
-      });
   }
 }
 
 class EmployeesModalController {
   constructor($log, $uibModalInstance, EmployeesService) {
-    'ngInject';
-
-    this.$uibModalInstance = $uibModalInstance;
-    this.$log = $log;
-    this.employeesService = EmployeesService;
+    _employeesService.set(this, EmployeesService);
+    _log.set(this, $log);
+    _uibModalInstance.set(this, $uibModalInstance);
   }
 
   addNewEmployee(employee) {
-    this.employeesService.addEmployee(employee);
+    return _employeesService.get(this).addEmployee(employee);
   }
 
   cancel() {
-    this.$uibModalInstance.dismiss('cancel');
+    _uibModalInstance.get(this).dismiss('cancel');
   }
 }
 
+EmployeesController.$inject = ['$log', '$uibModal'];
 EmployeesModalController.$inject = ['$log', '$uibModalInstance', 'EmployeesService'];
+

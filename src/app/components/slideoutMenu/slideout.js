@@ -1,6 +1,8 @@
-export function SlideoutDirective() {
-  'ngInject';
+'use strict';
 
+const _scope = new WeakMap();
+
+export function SlideoutDirective() {
   let directive = {
     restrict: 'E',
     templateUrl: 'app/components/slideoutMenu/slideout.html',
@@ -13,7 +15,7 @@ export function SlideoutDirective() {
 
 class SlideoutController {
   constructor($scope) {
-    'ngInject';
+    _scope.set(this, $scope);
 
     this.menuItems = [
       {
@@ -40,8 +42,10 @@ class SlideoutController {
 
     this.slideOutVisible = false;
 
-    $scope.$on('slideout', (e, data) => {
+    _scope.get(this).$on('slideout', (e, data) => {
       this.slideOutVisible = data;
     });
   }
 }
+
+SlideoutController.$inject = ['$scope'];
