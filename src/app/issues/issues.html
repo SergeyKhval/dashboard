@@ -1,1 +1,53 @@
-<p class="text-center">issues</p>
+<script type="text/ng-template" id="issuesModal.html">
+  <div class="modal-header">
+    <h3 class="modal-title">Add new issue</h3>
+  </div>
+  <div class="modal-body">
+    <form id="issue-form" ng-submit="im.addNewIssue(issue)">
+
+      <div class="form-group">
+        <label for="title" class="control-label">Title:</label>
+        <input type="text" id="title" class="form-control" ng-model="issue.title" placeholder="I need wi-fi password">
+      </div>
+
+      <div class="form-group">
+        <label for="reporter" class="control-label">Reporter:</label>
+        <input type="text" id="reporter" class="form-control" ng-model="issue.reporter" placeholder="John Doe">
+      </div>
+
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-primary" type="submit" form="issue-form">Add issue</button>
+    <button class="btn btn-danger" type="button" ng-click="im.cancel()">Cancel</button>
+  </div>
+</script>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-xs-12">
+      <button class="btn btn-primary" ng-click="issues.openAddIssueModal()">Add new issue</button>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-12">
+      <table class="table table-condensed">
+        <thead>
+        <tr>
+          <th>Title <i class="fa fa-sort-asc" aria-hidden="true"></i></th>
+          <th>Status</th>
+          <th>Reporter <i class="fa fa-sort-desc" aria-hidden="true"></i></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="issue in issues.issues">
+          <td>{{issue.title}}</td>
+          <td>{{issue.status}}</td>
+          <td>{{issue.reporter}}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

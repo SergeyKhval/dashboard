@@ -4,6 +4,7 @@ import {runBlock} from './index.run';
 import {MainController} from './main/main.controller';
 import {EmployeesController} from './employees/employees.controller';
 import {EmployeesService} from './employees/employees.service';
+import {IssuesService} from './issues/issues.service';
 import {IssuesController} from './issues/issues.controller';
 import {AnalyticsController} from './analytics/analytics.controller';
 import {StatusbarDirective} from '../app/components/statusbar/statusbar.js';
@@ -28,6 +29,7 @@ angular.module('dashboard',
   .run(runBlock)
   .controller('MainController', MainController)
   .service('EmployeesService', EmployeesService)
+  .service('IssuesService', IssuesService)
   .controller('EmployeesController', EmployeesController)
   .controller('IssuesController', IssuesController)
   .controller('AnalyticsController', AnalyticsController)

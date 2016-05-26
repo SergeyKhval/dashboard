@@ -1,32 +1,28 @@
 'use strict';
 const _uibModal = new WeakMap();
-const _log = new WeakMap();
 const _employeesService = new WeakMap();
 const _uibModalInstance = new WeakMap();
 
 export class EmployeesController {
-  constructor($log, $uibModal, EmployeesService) {
+  constructor($uibModal, EmployeesService) {
     _uibModal.set(this, $uibModal);
-    _log.set(this, $log);
     _employeesService.set(this, EmployeesService);
 
     this.employees = _employeesService.get(this).employees;
   }
 
-  openAddEmployeeModal(size) {
+  openAddEmployeeModal() {
     _uibModal.get(this).open({
       templateUrl: 'myModalContent.html',
       controller: EmployeesModalController,
-      controllerAs: 'emc',
-      size: size
+      controllerAs: 'emc'
     });
   }
 }
 
 class EmployeesModalController {
-  constructor($log, $uibModalInstance, EmployeesService) {
+  constructor($uibModalInstance, EmployeesService) {
     _employeesService.set(this, EmployeesService);
-    _log.set(this, $log);
     _uibModalInstance.set(this, $uibModalInstance);
   }
 
@@ -39,6 +35,6 @@ class EmployeesModalController {
   }
 }
 
-EmployeesController.$inject = ['$log', '$uibModal', 'EmployeesService'];
-EmployeesModalController.$inject = ['$log', '$uibModalInstance', 'EmployeesService'];
+EmployeesController.$inject = ['$uibModal', 'EmployeesService'];
+EmployeesModalController.$inject = ['$uibModalInstance', 'EmployeesService'];
 
