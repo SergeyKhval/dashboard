@@ -20,6 +20,11 @@
         <input type="text" id="position" class="form-control" ng-model="employee.position">
       </div>
 
+      <div class="form-group">
+        <label for="city" class="control-label">City:</label>
+        <input type="text" id="city" class="form-control" ng-model="employee.city">
+      </div>
+
 
     </form>
   </div>
@@ -33,6 +38,30 @@
   <div class="row">
     <div class="col-xs-12">
       <button class="btn btn-primary" ng-click="employees.openAddEmployeeModal()">Add new employee</button>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-4">
+      <uib-accordion close-others="true">
+        <uib-accordion-group ng-repeat="city in employees.employees" heading="{{city.$id}}"
+                             panel-class="panel-primary">
+          <table class="table table-condensed">
+            <thead>
+            <tr>
+              <th>Name</th>
+              <th>Position</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="employee in city">
+              <td>{{employee.firstName}} {{employee.lastName}}</td>
+              <td>{{employee.position}}</td>
+            </tr>
+            </tbody>
+          </table>
+        </uib-accordion-group>
+      </uib-accordion>
     </div>
   </div>
 </div>
