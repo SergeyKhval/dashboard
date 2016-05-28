@@ -15,7 +15,7 @@ export class EmployeesController {
 
   openAddEmployeeModal() {
     _uibModal.get(this).open({
-      templateUrl: './app/employees/employeesModal.html',
+      templateUrl: 'app/employees/employeesModal.html',
       controller: EmployeesModalController,
       controllerAs: 'emc'
     });

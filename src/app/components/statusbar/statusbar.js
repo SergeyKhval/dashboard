@@ -1,5 +1,8 @@
 'use strict';
+import EmployeesModalController from '../../employees/employeesModal.controller';
+
 const _scope = new WeakMap();
+const _uibModal = new WeakMap();
 
 export function StatusbarDirective() {
   let directive = {
@@ -15,9 +18,10 @@ export function StatusbarDirective() {
 }
 
 class StatusbarController {
-  constructor($scope) {
+  constructor($scope, $uibModal) {
 
     _scope.set(this, $scope);
+    _uibModal.set(this, $uibModal);
 
     this.slideoutVisible = false;
 
@@ -30,6 +34,14 @@ class StatusbarController {
     this.slideoutVisible = !this.slideoutVisible;
     _scope.get(this).$emit('slideout', this.slideoutVisible);
   }
+
+  openAddEmployeeModal() {
+    _uibModal.get(this).open({
+      templateUrl: 'app/employees/employeesModal.html',
+      controller: EmployeesModalController,
+      controllerAs: 'emc'
+    });
+  }
 }
 
-StatusbarController.$inject = ['$scope'];
+StatusbarController.$inject = ['$scope', '$uibModal'];
