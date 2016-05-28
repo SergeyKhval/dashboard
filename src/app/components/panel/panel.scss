@@ -1,0 +1,16 @@
+//Overrides for bootstrap panels
+
+.panel {
+  &-primary {
+    .panel-title {
+      a {
+        display: block;
+
+        &:hover,
+        &:focus {
+          color: $gray-lighter;
+        }
+      }
+    }
+  }
+}
