@@ -1,5 +1,6 @@
 'use strict';
 import EmployeesModalController from '../../employees/employeesModal.controller';
+import IssuesModalController from '../../issues/issuesModal.controller';
 
 const _scope = new WeakMap();
 const _uibModal = new WeakMap();
@@ -40,6 +41,14 @@ class StatusbarController {
       templateUrl: 'app/employees/employeesModal.html',
       controller: EmployeesModalController,
       controllerAs: 'emc'
+    });
+  }
+
+  openAddIssueModal() {
+    _uibModal.get(this).open({
+      templateUrl: 'app/issues/issuesModal.html',
+      controller: IssuesModalController,
+      controllerAs: 'im'
     });
   }
 }

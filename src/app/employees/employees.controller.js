@@ -23,5 +23,3 @@ export class EmployeesController {
 }
 
 EmployeesController.$inject = ['$uibModal', 'EmployeesService'];
-
-
