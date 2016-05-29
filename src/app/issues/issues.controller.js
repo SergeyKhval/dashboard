@@ -12,6 +12,10 @@ export class IssuesController {
     _toaster.set(this, toaster);
 
     this.issues = _issuesService.get(this).issues;
+
+    this.search = '';
+    this.filter = '';
+    this.sort = 'title';
   }
 
   openAddIssueModal() {
