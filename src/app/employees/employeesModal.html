@@ -2,7 +2,7 @@
   <h3 class="modal-title">Add new employee</h3>
 </div>
 <div class="modal-body">
-  <form id="employee-form" ng-submit="emc.addNewEmployee(employee)">
+  <form id="employeeform" name="employeeform" ng-submit="emc.addNewEmployee(employee)">
 
     <div class="form-group">
       <label for="first-name" class="control-label">First Name:</label>
@@ -28,6 +28,6 @@
   </form>
 </div>
 <div class="modal-footer">
-  <button class="btn btn-primary" type="submit" form="employee-form">Add employee</button>
+  <button class="btn btn-primary" type="submit" form="employeeform">Add employee</button>
   <button class="btn btn-danger" type="button" ng-click="emc.cancel()">Cancel</button>
 </div>
