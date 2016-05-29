@@ -20,9 +20,49 @@ $icon-font-path: "../../bower_components/bootstrap-sass/assets/fonts/bootstrap/"
   padding: 0.2em 0;
 }
 
+//TODO: Move this to separate file
+a[ng-click] {
+  cursor: pointer;
+}
+
+.table {
+  tbody {
+    tr {
+      td {
+        vertical-align: middle;
+
+        .btn-group {
+          margin-top: 0;
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+}
+
+.dropdown {
+  .dropdown-menu {
+    display: block;
+
+    transform: scale(0);
+    transform-origin: top left;
+    opacity: 0;
+
+    transition: all 0.25s ease;
+  }
+
+  &.open {
+    .dropdown-menu {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+}
+
 /**
- *  Do not remove the comments below. It's the markers used by gulp-inject to inject
+ *  Do not remove the comments below. It' s the markers used by gulp-inject to inject
  *  all your sass files automatically
  */
+
 // injector
 // endinjector
