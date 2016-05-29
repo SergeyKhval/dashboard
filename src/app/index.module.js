@@ -21,6 +21,7 @@ angular.module('dashboard',
     'ngAria',
     'ngRoute',
     'ui.bootstrap',
+    'toaster',
     'firebase',
     'firebase.ref'
   ])
