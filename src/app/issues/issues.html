@@ -9,6 +9,10 @@
 
   <div class="row">
     <div class="col-xs-12">
+      <div class="form-group">
+        <label for="filterissues" class="control-label">Search for issue:</label>
+        <input type="text" id="filterissues" class="form-control" ng-model="issues.filter" placeholder="Search titles, statuses and repoters">
+      </div>
       <table class="table table-condensed">
         <thead>
         <tr>
@@ -18,7 +22,7 @@
         </tr>
         </thead>
         <tbody>
-        <tr ng-repeat="issue in issues.issues">
+        <tr ng-repeat="issue in issues.issues | filter: issues.filter">
           <td>{{issue.title}}</td>
           <td>{{issue.status}}</td>
           <td>{{issue.reporter}}</td>
