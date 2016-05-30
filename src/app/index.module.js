@@ -23,7 +23,8 @@ angular.module('dashboard',
     'ui.bootstrap',
     'toaster',
     'firebase',
-    'firebase.ref'
+    'firebase.ref',
+    'angular-dimple'
   ])
   .config(config)
   .config(routerConfig)
