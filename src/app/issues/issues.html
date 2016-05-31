@@ -37,13 +37,20 @@
             <i class="fa fa-sort-asc" aria-hidden="true" ng-if="issues.sort === '-reporter'"></i>
             <i class="fa fa-sort-desc" aria-hidden="true" ng-if="issues.sort === 'reporter'"></i>
           </th>
+          <th ng-click="issues.sort = issues.sort === 'createdAt' ? '-createdAt' : 'createdAt'">
+            Created
+            <i class="fa fa-sort-asc" aria-hidden="true" ng-if="issues.sort === '-createdAt'"></i>
+            <i class="fa fa-sort-desc" aria-hidden="true" ng-if="issues.sort === 'createdAt'"></i>
+          </th>
           <th>Status</th>
         </tr>
         </thead>
         <tbody>
-        <tr ng-repeat="issue in issues.issues | filter: issues.search | filter: issues.filter | orderBy: issues.sort">
+        <tr ng-repeat="issue in issues.issues | filter: issues.search | filter: issues.filter | orderBy: issues.sort"
+            ng-click="openDetailedModal(issue)">
           <td>{{issue.title}}</td>
           <td>{{issue.reporter}}</td>
+          <td>{{issue.createdAt | date: 'longDate'}}</td>
           <td>
             <div class="btn-group" uib-dropdown>
               <button id="single-button" type="button" class="btn btn-raised"
