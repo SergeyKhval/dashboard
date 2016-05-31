@@ -24,7 +24,7 @@ angular.module('dashboard',
     'toaster',
     'firebase',
     'firebase.ref',
-    'angular-dimple'
+    'chart.js'
   ])
   .config(config)
   .config(routerConfig)

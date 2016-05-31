@@ -19,7 +19,7 @@ export function routerConfig($routeProvider) {
     .when('/analytics', {
       templateUrl: 'app/analytics/analytics.html',
       controller: 'AnalyticsController',
-      controllerAs: 'analytics'
+      controllerAs: 'an'
     })
     .otherwise({
       redirectTo: '/'
