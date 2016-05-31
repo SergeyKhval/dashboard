@@ -22,7 +22,25 @@ export class IssuesController {
     _uibModal.get(this).open({
       templateUrl: 'app/issues/issuesModal.html',
       controller: IssuesModalController,
-      controllerAs: 'im'
+      controllerAs: 'im',
+      resolve: {
+        selectedIssue: () => {
+          return null;
+        }
+      }
+    });
+  }
+
+  openDetailIssueModal(issue) {
+    _uibModal.get(this).open({
+      templateUrl: 'app/issues/issueDetailsModal.html',
+      controller: IssuesModalController,
+      controllerAs: 'im',
+      resolve: {
+        selectedIssue: function () {
+          return issue;
+        }
+      }
     });
   }
 

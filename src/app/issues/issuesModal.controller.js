@@ -4,13 +4,16 @@ const _issuesService = new WeakMap();
 const _toaster = new WeakMap();
 
 export default class IssuesModalController {
-  constructor($uibModalInstance, IssuesService, toaster) {
+  constructor($uibModalInstance, IssuesService, toaster, selectedIssue) {
     _uibModalInstance.set(this, $uibModalInstance);
     _issuesService.set(this, IssuesService);
     _toaster.set(this, toaster);
 
     this.issue = {};
+
+    this.selectedIssue = selectedIssue;
   }
+
 
   addNewIssue(issue) {
     return _issuesService.get(this).addIssue(issue)
@@ -30,4 +33,4 @@ export default class IssuesModalController {
   }
 }
 
-IssuesModalController.$inject = ['$uibModalInstance', 'IssuesService', 'toaster'];
+IssuesModalController.$inject = ['$uibModalInstance', 'IssuesService', 'toaster', 'selectedIssue'];

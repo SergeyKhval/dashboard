@@ -1,0 +1,31 @@
+<div class="panel" ng-class="{'panel-success': im.selectedIssue.status === 'resolved',
+                                      'panel-warning': im.selectedIssue.status === 'in progress',
+                                      'panel-primary': im.selectedIssue.status === 'open'}">
+  <div class="panel-heading">
+    <h3 class="panel-title">{{im.selectedIssue.title}}</h3>
+  </div>
+  <div class="panel-body">
+    <label class="control-label">Customer:</label>
+    <p>
+      {{im.selectedIssue.customer}}
+      (<a ng-href="mailto:{{im.selectedIssue.customerEmail}}">{{im.selectedIssue.customerEmail}}</a>)
+    </p>
+
+    <label class="control-label">Description:</label>
+    <p>{{im.selectedIssue.description}}</p>
+
+    <label class="control-label">Reporter:</label>
+    <p>{{im.selectedIssue.reporter}}</p>
+
+    <div class="row">
+      <div class="col-sm-6"><label class="control-label">Created at:</label>
+        <p>{{im.selectedIssue.createdAt | date:'longDate'}}</p></div>
+
+      <div class="col-sm-6"><label class="control-label">Updated at:</label>
+        <p>{{im.selectedIssue.updatedAt | date:'longDate'}}</p></div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-success" type="button" ng-click="im.cancel()">Ok</button>
+  </div>
+</div>

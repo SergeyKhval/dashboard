@@ -47,7 +47,7 @@
         </thead>
         <tbody>
         <tr ng-repeat="issue in issues.issues | filter: issues.search | filter: issues.filter | orderBy: issues.sort"
-            ng-click="openDetailedModal(issue)">
+            ng-click="issues.openDetailIssueModal(issue)">
           <td>{{issue.title}}</td>
           <td>{{issue.reporter}}</td>
           <td>{{issue.createdAt | date: 'longDate'}}</td>
