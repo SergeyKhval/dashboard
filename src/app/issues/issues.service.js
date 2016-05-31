@@ -15,6 +15,7 @@ export class IssuesService {
     let issueObj = {
       title: issue.title,
       reporter: issue.reporter,
+      createdAt: Firebase.ServerValue.TIMESTAMP,
       status: 'open'
     };
 
