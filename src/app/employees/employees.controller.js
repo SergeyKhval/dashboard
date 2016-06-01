@@ -11,6 +11,7 @@ export class EmployeesController {
     _employeesService.set(this, EmployeesService);
 
     this.employees = _employeesService.get(this).employees;
+    this.selectedEmployee = false;
   }
 
   openAddEmployeeModal() {
@@ -19,6 +20,10 @@ export class EmployeesController {
       controller: EmployeesModalController,
       controllerAs: 'emc'
     });
+  }
+
+  select(employee){
+    this.selectedEmployee = employee;
   }
 }
 

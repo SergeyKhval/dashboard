@@ -20,7 +20,7 @@
             </tr>
             </thead>
             <tbody>
-            <tr ng-repeat="employee in city">
+            <tr ng-repeat="employee in city" ng-click="employees.select(employee)">
               <td>{{employee.firstName}} {{employee.lastName}}</td>
               <td>{{employee.position}}</td>
             </tr>
@@ -28,6 +28,26 @@
           </table>
         </uib-accordion-group>
       </uib-accordion>
+    </div>
+
+    <div class="col-md-8">
+      <div class="panel panel-primary">
+        <div class="panel-heading">
+          <h3 class="panel-title">Employee info</h3>
+        </div>
+        <div class="panel-body">
+          <p class="lead" ng-hide="employees.selectedEmployee">
+            Please, click on employee in the list to see detailed info
+          </p>
+
+          <div ng-show="employees.selectedEmployee">
+            <p><em>Name</em>: {{employees.selectedEmployee.firstName}}</p>
+            <p><em>Last Name</em>: {{employees.selectedEmployee.lastName}}</p>
+            <p><em>Position</em>: {{employees.selectedEmployee.position}}</p>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
 </div>
