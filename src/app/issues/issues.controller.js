@@ -46,6 +46,7 @@ export class IssuesController {
 
   updateIssueStatus(issue, status) {
     issue.status = status;
+    issue.updatedAt = Firebase.ServerValue.TIMESTAMP;
     return this.issues.$save(issue)
       .then(() => {
         _toaster.get(this).pop('success', 'Status updated');
