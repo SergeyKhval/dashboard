@@ -18,7 +18,7 @@
 
       <div class="btn-group">
         <label class="btn btn-default" ng-model="issues.filter" uib-btn-radio="" uncheckable>All</label>
-        <label class="btn btn-default" ng-model="issues.filter" uib-btn-radio="'open'" uncheckable>Opened</label>
+        <label class="btn btn-default" ng-model="issues.filter" uib-btn-radio="'open'" uncheckable>Open</label>
         <label class="btn btn-default" ng-model="issues.filter" uib-btn-radio="'in progress'" uncheckable>In
           progress</label>
         <label class="btn btn-default" ng-model="issues.filter" uib-btn-radio="'resolved'" uncheckable>Resolved</label>
@@ -52,7 +52,7 @@
           <td>{{issue.reporter}}</td>
           <td>{{issue.createdAt | date: 'longDate'}}</td>
           <td>
-            <div class="btn-group" uib-dropdown>
+            <div class="btn-group" uib-dropdown ng-click="$event.stopPropagation()">
               <button id="single-button" type="button" class="btn btn-raised"
                       ng-class="{'btn-primary': issue.status === 'open',
                       'btn-warning': issue.status === 'in progress',
