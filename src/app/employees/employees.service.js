@@ -12,12 +12,21 @@ export class EmployeesService {
   }
 
   addEmployee(employee) {
-    let city = employee.city.toLowerCase();
+    console.log(employee.place);
+    let city = '';
+
+    employee.place.address_components.forEach(component => {
+      if (component.types[0] === 'locality'){
+        city = component.long_name;
+      }
+    });
 
     let employeeObj = {
       firstName: employee.firstName,
       lastName: employee.lastName,
-      position: employee.position
+      position: employee.position,
+      lat: employee.place.geometry.location.lat(),
+      lon: employee.place.geometry.location.lng()
     };
 
     return _firebaseArray.get(this)(_employeesRef.get(this).child(city)).$add(employeeObj);
