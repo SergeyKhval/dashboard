@@ -25,6 +25,7 @@ angular.module('dashboard',
     'firebase',
     'firebase.ref',
     'chart.js',
+    'uiGmapgoogle-maps',
     'google.places'
   ])
   .config(config)

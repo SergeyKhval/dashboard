@@ -40,10 +40,21 @@
             Please, click on employee in the list to see detailed info
           </p>
 
-          <div ng-show="employees.selectedEmployee">
+          <div ng-if="employees.selectedEmployee">
             <p><em>Name</em>: {{employees.selectedEmployee.firstName}}</p>
             <p><em>Last Name</em>: {{employees.selectedEmployee.lastName}}</p>
             <p><em>Position</em>: {{employees.selectedEmployee.position}}</p>
+
+            <div>
+              <ui-gmap-google-map
+                center='{latitude: employees.selectedEmployee.lat, longitude: employees.selectedEmployee.lon}'
+                zoom='14'>
+                <ui-gmap-marker
+                  idKey='employees.selectedEmployee.firstName'
+                  coords='{latitude: employees.selectedEmployee.lat, longitude: employees.selectedEmployee.lon}'>
+                </ui-gmap-marker>
+              </ui-gmap-google-map>
+            </div>
           </div>
         </div>
       </div>

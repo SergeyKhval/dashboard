@@ -12,7 +12,6 @@ export class EmployeesService {
   }
 
   addEmployee(employee) {
-    console.log(employee.place);
     let city = '';
 
     employee.place.address_components.forEach(component => {
