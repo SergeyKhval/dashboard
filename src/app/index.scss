@@ -59,6 +59,10 @@ a[ng-click] {
   }
 }
 
+.pac-container {
+  z-index: 1051;
+}
+
 /**
  *  Do not remove the comments below. It' s the markers used by gulp-inject to inject
  *  all your sass files automatically

@@ -1,6 +1,7 @@
 <div class="modal-header">
   <h3 class="modal-title">Add new employee</h3>
 </div>
+
 <div class="modal-body">
   <form id="employeeform" name="employeeform" ng-submit="emc.addNewEmployee(employee)">
 
@@ -22,12 +23,11 @@
 
     <div class="form-group">
       <label for="city" class="control-label">City:</label>
-      <input type="text" id="city" class="form-control" placeholder="Mountain View" ng-model="employee.city">
+      <input g-places-autocomplete type="text" id="city" class="form-control" placeholder="Mountain View" ng-model="employee.city">
     </div>
-
-
   </form>
 </div>
+
 <div class="modal-footer">
   <button class="btn btn-primary" type="submit" form="employeeform">Add employee</button>
   <button class="btn btn-danger" type="button" ng-click="emc.cancel()">Cancel</button>

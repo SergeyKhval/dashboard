@@ -24,7 +24,8 @@ angular.module('dashboard',
     'toaster',
     'firebase',
     'firebase.ref',
-    'chart.js'
+    'chart.js',
+    'google.places'
   ])
   .config(config)
   .config(routerConfig)
