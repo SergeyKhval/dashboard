@@ -4,6 +4,7 @@ import IssuesModalController from '../../issues/issuesModal.controller';
 
 const _scope = new WeakMap();
 const _uibModal = new WeakMap();
+const _route = new WeakMap();
 
 export function StatusbarDirective() {
   let directive = {
@@ -19,15 +20,20 @@ export function StatusbarDirective() {
 }
 
 class StatusbarController {
-  constructor($scope, $uibModal) {
+  constructor($scope, $uibModal, $route) {
 
     _scope.set(this, $scope);
     _uibModal.set(this, $uibModal);
+    _route.set(this, $route);
 
     this.slideoutVisible = false;
 
     _scope.get(this).$on('slideout', (e, data) => {
       this.slideoutVisible = data;
+    });
+
+    _scope.get(this).$on('$routeChangeSuccess', () => {
+      this.title = _route.get(this).current.locals.title;
     })
   }
 
@@ -58,4 +64,4 @@ class StatusbarController {
   }
 }
 
-StatusbarController.$inject = ['$scope', '$uibModal'];
+StatusbarController.$inject = ['$scope', '$uibModal', '$route'];
