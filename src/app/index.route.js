@@ -4,22 +4,34 @@ export function routerConfig($routeProvider) {
     .when('/', {
       templateUrl: 'app/main/main.html',
       controller: 'MainController',
-      controllerAs: 'main'
+      controllerAs: 'main',
+      resolve: {
+        title: () => 'Home'
+      }
     })
     .when('/employees', {
       templateUrl: 'app/employees/employees.html',
       controller: 'EmployeesController',
-      controllerAs: 'employees'
+      controllerAs: 'employees',
+      resolve: {
+        title: () => 'Employees'
+      }
     })
     .when('/issues', {
       templateUrl: 'app/issues/issues.html',
       controller: 'IssuesController',
-      controllerAs: 'issues'
+      controllerAs: 'issues',
+      resolve: {
+        title: () => 'Issues'
+      }
     })
     .when('/analytics', {
       templateUrl: 'app/analytics/analytics.html',
       controller: 'AnalyticsController',
-      controllerAs: 'an'
+      controllerAs: 'an',
+      resolve: {
+        title: () => 'Analytics'
+      }
     })
     .otherwise({
       redirectTo: '/'
