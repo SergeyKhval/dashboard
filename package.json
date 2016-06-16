@@ -50,6 +50,8 @@
     "ng-annotate-loader": "0.0.10",
     "phantomjs": "~1.9.18",
     "uglify-save-license": "~0.4.1",
+    "webpack-stream": "^3.2.0",
+    "wiredep": "~2.2.2",
     "wrench": "~1.5.8"
   },
   "engines": {
