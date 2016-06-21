@@ -5,8 +5,23 @@
               chart-legend="true" chart-series="an.series"></canvas>
     </div>
     <div class="col-md-6">
-      <canvas id="bar" class="chart chart-bar" chart-data="an.barData" chart-labels="an.barLabels">
+
+
+      <h3>Total opened issues in 2016 by month</h3>
+      <canvas id="bar" class="chart chart-bar" chart-data="an.issuesByMonth" chart-labels="an.barLabels">
       </canvas>
+
+      <div class="row">
+        <div class="col-md-4">
+          <p>Currently opened issues: <b>{{(an.issues | filter: 'open').length}}</b></p>
+        </div>
+        <div class="col-md-4">
+          <p>Currently issues in progress: <b>{{(an.issues | filter: 'in progress').length}}</b></p>
+        </div>
+        <div class="col-md-4">
+          <p>Resolved issues: <b>{{(an.issues | filter: 'resolved').length}}</b></p>
+        </div>
+      </div>
     </div>
   </div>
 </div>

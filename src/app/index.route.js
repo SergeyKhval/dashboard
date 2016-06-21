@@ -30,10 +30,7 @@ export function routerConfig($routeProvider) {
       controller: 'AnalyticsController',
       controllerAs: 'an',
       resolve: {
-        title: () => 'Analytics',
-        'IssuesServiceData': (IssuesService) => {
-          return IssuesService.promise
-        }
+        title: () => 'Analytics'
       }
     })
     .otherwise({

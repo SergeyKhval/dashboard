@@ -4,10 +4,29 @@
 const _issues = new WeakMap();
 const _months = new WeakMap();
 
+function countIssuesByMonth(issues) {
+  let count = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+
+  issues.forEach((issue) => {
+    let curIssueMonthIndex = (new Date(issue.createdAt)).getMonth()
+
+    count[curIssueMonthIndex] += 1;
+  });
+
+  return count;
+}
+
 export class AnalyticsController {
   constructor(months, IssuesService) {
     _months.set(this, months);
     _issues.set(this, IssuesService);
+
+    this.issues = _issues.get(this).issues;
+    this.issuesByMonth = [countIssuesByMonth(this.issues)];
+
+    this.issues.$watch(() => {
+      this.issuesByMonth = [countIssuesByMonth(this.issues)];
+    });
 
     this.labels = ["January", "February", "March", "April", "May", "June", "July"];
     this.series = ['Series A', 'Series B'];
@@ -17,9 +36,6 @@ export class AnalyticsController {
     ];
 
     this.barLabels = _months.get(this);
-
-    this.barData = [_issues.get(this).issuesByMonthCount];
-
   }
 }
 

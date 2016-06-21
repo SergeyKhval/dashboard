@@ -4,33 +4,13 @@
 const _issuesRef = new WeakMap();
 const _firebaseArray = new WeakMap();
 
-//Helper functions
-function countIssuesByMonth(issues) {
-  let count = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-
-  issues.forEach((issue) => {
-    let curIssueMonthIndex = (new Date(issue.createdAt)).getMonth()
-
-    count[curIssueMonthIndex] += 1;
-  });
-
-  return count;
-}
-
 //Service
 export class IssuesService {
   constructor(Ref, $firebaseArray) {
     _issuesRef.set(this, Ref.child('issues'));
     _firebaseArray.set(this, $firebaseArray);
 
-    this.issues = null;
-    this.issuesByMonthCount = [];
-
-    this.promise = _firebaseArray.get(this)(_issuesRef.get(this)).$loaded((data) => {
-      this.issues = data;
-      this.issuesByMonthCount = countIssuesByMonth(this.issues);
-    });
-
+    this.issues = _firebaseArray.get(this)(_issuesRef.get(this));
   }
 
   addIssue(issue) {
