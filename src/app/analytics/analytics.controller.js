@@ -2,13 +2,14 @@
 
 //Containers for controller dependecies
 const _issues = new WeakMap();
+const _payments = new WeakMap();
 const _months = new WeakMap();
 
 function countIssuesByMonth(issues) {
   let count = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 
   issues.forEach((issue) => {
-    let curIssueMonthIndex = (new Date(issue.createdAt)).getMonth()
+    let curIssueMonthIndex = (new Date(issue.createdAt)).getMonth();
 
     count[curIssueMonthIndex] += 1;
   });
@@ -17,9 +18,10 @@ function countIssuesByMonth(issues) {
 }
 
 export class AnalyticsController {
-  constructor(months, IssuesService) {
+  constructor($log, months, IssuesService, PaymentsService) {
     _months.set(this, months);
     _issues.set(this, IssuesService);
+    _payments.set(this, PaymentsService);
 
     this.issues = _issues.get(this).issues;
     this.issuesByMonth = [countIssuesByMonth(this.issues)];
@@ -28,17 +30,16 @@ export class AnalyticsController {
       this.issuesByMonth = [countIssuesByMonth(this.issues)];
     });
 
-    this.labels = ["January", "February", "March", "April", "May", "June", "July"];
-    this.series = ['Series A', 'Series B'];
-    this.data = [
-      [65, 59, 80, 81, 56, 55, 40],
-      [28, 48, 40, 19, 86, 27, 90]
-    ];
+    this.payments = _payments.get(this).payments;
+
+    this.payments.$watch(() => {
+      this.data = [this.payments.map(payment => payment.$value)];
+    });
 
     this.barLabels = _months.get(this);
   }
 }
 
-AnalyticsController.$inject = ['months', 'IssuesService'];
+AnalyticsController.$inject = ['$log', 'months', 'IssuesService', 'PaymentsService'];
 
 
