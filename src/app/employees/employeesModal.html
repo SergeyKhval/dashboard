@@ -6,24 +6,26 @@
   <form id="employeeform" name="employeeform" ng-submit="emc.addNewEmployee(employee)">
 
     <div class="form-group">
-      <label for="first-name" class="control-label">First Name:</label>
+      <label for="first-name" class="control-label control-label_required">First Name:</label>
       <input type="text" id="first-name" class="form-control" placeholder="Jane" ng-model="employee.firstName"
-             autofocus>
+             autofocus required>
     </div>
 
     <div class="form-group">
-      <label for="last-name" class="control-label">Last Name:</label>
-      <input type="text" id="last-name" class="form-control" placeholder="Doe" ng-model="employee.lastName">
+      <label for="last-name" class="control-label control-label_required">Last Name:</label>
+      <input type="text" id="last-name" class="form-control" placeholder="Doe" ng-model="employee.lastName" required>
     </div>
 
     <div class="form-group">
-      <label for="position" class="control-label">Position:</label>
-      <input type="text" id="position" class="form-control" placeholder="accountant" ng-model="employee.position">
+      <label for="position" class="control-label control-label_required">Position:</label>
+      <input type="text" id="position" class="form-control" placeholder="accountant" ng-model="employee.position"
+             requried>
     </div>
 
     <div class="form-group">
-      <label for="city" class="control-label">City:</label>
-      <input g-places-autocomplete type="text" id="city" class="form-control" placeholder="Mountain View" ng-model="employee.place">
+      <label for="city" class="control-label control-label_requried">City:</label>
+      <input g-places-autocomplete type="text" id="city" class="form-control" placeholder="Mountain View"
+             ng-model="employee.place" required>
     </div>
   </form>
 </div>

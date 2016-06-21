@@ -5,19 +5,21 @@
   <form id="issueform" name="im.issueform" ng-submit="im.addNewIssue(im.issue)">
 
     <div class="form-group">
-      <label for="name" class="control-label">Customer name:</label>
-      <input type="text" id="name" class="form-control" ng-model="im.issue.customer" placeholder="Bob Marley" autofocus>
+      <label for="name" class="control-label control-label_required">Customer name:</label>
+      <input type="text" id="name" class="form-control" ng-model="im.issue.customer" placeholder="Bob Marley" autofocus
+             required>
     </div>
 
     <div class="form-group">
-      <label for="email" class="control-label">Customer email:</label>
+      <label for="email" class="control-label control-label_required">Customer email:</label>
       <input type="email" id="email" class="form-control" ng-model="im.issue.customerEmail"
-             placeholder="mail@domain.com">
+             placeholder="mail@domain.com" required>
     </div>
 
     <div class="form-group">
-      <label for="title" class="control-label">Title:</label>
-      <input type="text" id="title" class="form-control" ng-model="im.issue.title" placeholder="I need wi-fi password">
+      <label for="title" class="control-label control-label_required">Title:</label>
+      <input type="text" id="title" class="form-control" ng-model="im.issue.title" placeholder="I need wi-fi password"
+             required>
     </div>
 
     <div class="form-group">
@@ -27,8 +29,9 @@
     </div>
 
     <div class="form-group">
-      <label for="reporter" class="control-label">Reporter:</label>
-      <input type="text" id="reporter" class="form-control" ng-model="im.issue.reporter" placeholder="John Doe">
+      <label for="reporter" class="control-label control-label_required">Reporter:</label>
+      <input type="text" id="reporter" class="form-control" ng-model="im.issue.reporter" placeholder="John Doe"
+             required>
     </div>
 
   </form>
