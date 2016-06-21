@@ -1,6 +1,7 @@
 import {config} from './index.config';
 import {routerConfig} from './index.route';
 import {runBlock} from './index.run';
+import {months} from './utils/months';
 import {MainController} from './main/main.controller';
 import {EmployeesController} from './employees/employees.controller';
 import {EmployeesService} from './employees/employees.service';
@@ -31,6 +32,7 @@ angular.module('dashboard',
   .config(config)
   .config(routerConfig)
   .run(runBlock)
+  .constant('months', months)
   .controller('MainController', MainController)
   .service('EmployeesService', EmployeesService)
   .service('IssuesService', IssuesService)

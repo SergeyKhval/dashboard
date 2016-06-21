@@ -14,5 +14,8 @@
     "module": true,
     "inject": true,
     "Firebase": true
+  },
+  "parserOptions": {
+    "sourceType": "module"
   }
 }
