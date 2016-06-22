@@ -1,4 +1,36 @@
-<!doctype html><html ng-app=dashboard ng-strict-di><head><meta charset=utf-8><title>dashboard</title><meta name=description content=""><meta name=viewport content="width=device-width"><!-- Place favicon.ico and apple-touch-icon.png in the root directory --><link rel=stylesheet href=styles/vendor-162546c952.css><link rel=stylesheet href=styles/app-e9c7b615ff.css></head><body><!--[if lt IE 10]>
+<!doctype html>
+<html ng-app="dashboard" ng-strict-di>
+<head>
+  <meta charset="utf-8">
+  <title>dashboard</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width">
+  <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+
+  <link rel="stylesheet" href="styles/vendor.css">
+
+  <link rel="stylesheet" href="styles/app.css">
+</head>
+<body>
+<!--[if lt IE 10]>
 <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
   your browser</a> to improve your experience.</p>
-<![endif]--><status-bar></status-bar><slideout-menu></slideout-menu><div ng-view></div><script src="https://maps.googleapis.com/maps/api/js?libraries=places"></script><script src=scripts/vendor-d5b74d8b41.js></script><script src=scripts/app-cd479ee50b.js></script><script>$.material.init();</script></body></html>
+<![endif]-->
+
+<status-bar></status-bar>
+<slideout-menu></slideout-menu>
+
+<div ng-view></div>
+
+<script src="https://maps.googleapis.com/maps/api/js?libraries=places"></script>
+
+<script src="scripts/vendor.js"></script>
+
+<script src="scripts/app.js"></script>
+
+<script>
+  $.material.init();
+</script>
+
+</body>
+</html>
