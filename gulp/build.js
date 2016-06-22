@@ -10,9 +10,9 @@ var $ = require('gulp-load-plugins')({
 
 gulp.task('partials', function () {
   return gulp.src([
-    path.join(conf.paths.src, '/app/**/*.html'),
-    path.join(conf.paths.tmp, '/serve/app/**/*.html')
-  ])
+      path.join(conf.paths.src, '/app/**/*.html'),
+      path.join(conf.paths.tmp, '/serve/app/**/*.html')
+    ])
     .pipe($.htmlmin({
       removeEmptyAttributes: true,
       removeAttributeQuotes: true,
@@ -27,29 +27,30 @@ gulp.task('partials', function () {
 });
 
 gulp.task('html', ['inject', 'partials'], function () {
-  var partialsInjectFile = gulp.src(path.join(conf.paths.tmp, '/partials/templateCacheHtml.js'), { read: false });
+  var partialsInjectFile = gulp.src(path.join(conf.paths.tmp, '/partials/templateCacheHtml.js'), {read: false});
   var partialsInjectOptions = {
     starttag: '<!-- inject:partials -->',
     ignorePath: path.join(conf.paths.tmp, '/partials'),
     addRootSlash: false
   };
 
-  var htmlFilter = $.filter('*.html', { restore: true });
-  var jsFilter = $.filter('**/*.js', { restore: true });
-  var cssFilter = $.filter('**/*.css', { restore: true });
+  var htmlFilter = $.filter('*.html', {restore: true});
+  var jsFilter = $.filter('**/*.js', {restore: true});
+  var cssFilter = $.filter('**/*.css', {restore: true});
 
   return gulp.src(path.join(conf.paths.tmp, '/serve/*.html'))
     .pipe($.inject(partialsInjectFile, partialsInjectOptions))
     .pipe($.useref())
     .pipe(jsFilter)
     .pipe($.sourcemaps.init())
-    .pipe($.uglify({ preserveComments: $.uglifySaveLicense })).on('error', conf.errorHandler('Uglify'))
+    .pipe($.uglify({preserveComments: $.uglifySaveLicense})).on('error', conf.errorHandler('Uglify'))
     .pipe($.rev())
     .pipe($.sourcemaps.write('maps'))
     .pipe(jsFilter.restore)
     .pipe(cssFilter)
     // .pipe($.sourcemaps.init())
     .pipe($.replace('../../bower_components/bootstrap-sass/assets/fonts/bootstrap/', '../fonts/'))
+    .pipe($.replace('../../bower_components/font-awesome/fonts', '../fonts'))
     .pipe($.cssnano())
     .pipe($.rev())
     // .pipe($.sourcemaps.write('maps'))
@@ -64,8 +65,8 @@ gulp.task('html', ['inject', 'partials'], function () {
     }))
     .pipe(htmlFilter.restore)
     .pipe(gulp.dest(path.join(conf.paths.dist, '/')))
-    .pipe($.size({ title: path.join(conf.paths.dist, '/'), showFiles: true }));
-  });
+    .pipe($.size({title: path.join(conf.paths.dist, '/'), showFiles: true}));
+});
 
 // Only applies for fonts from bower dependencies
 // Custom fonts are handled by the "other" task
@@ -82,9 +83,9 @@ gulp.task('other', function () {
   });
 
   return gulp.src([
-    path.join(conf.paths.src, '/**/*'),
-    path.join('!' + conf.paths.src, '/**/*.{html,css,js,scss}')
-  ])
+      path.join(conf.paths.src, '/**/*'),
+      path.join('!' + conf.paths.src, '/**/*.{html,css,js,scss}')
+    ])
     .pipe(fileFilter)
     .pipe(gulp.dest(path.join(conf.paths.dist, '/')));
 });
