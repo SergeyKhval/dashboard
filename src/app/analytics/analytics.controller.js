@@ -31,6 +31,7 @@ export class AnalyticsController {
     });
 
     this.payments = _payments.get(this).payments;
+    this.data = [this.payments.map(payment => payment.$value)];
 
     this.payments.$watch(() => {
       this.data = [this.payments.map(payment => payment.$value)];
