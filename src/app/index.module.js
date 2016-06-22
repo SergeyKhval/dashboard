@@ -7,6 +7,7 @@ import {EmployeesService} from './employees/employees.service';
 import {IssuesService} from './issues/issues.service';
 import {IssuesController} from './issues/issues.controller';
 import {PaymentsService} from './payments/paymentsService';
+import {HomeController} from './home/home.controller';
 import {AnalyticsController} from './analytics/analytics.controller';
 import {StatusbarDirective} from '../app/components/statusbar/statusbar.js';
 import {SlideoutDirective} from '../app/components/slideoutMenu/slideout.js';
@@ -40,6 +41,7 @@ angular.module('dashboard',
   .controller('EmployeesController', EmployeesController)
   .controller('IssuesController', IssuesController)
   .controller('AnalyticsController', AnalyticsController)
+  .controller('HomeController', HomeController)
   .directive('slideoutMenu', SlideoutDirective)
   .directive('statusBar', StatusbarDirective);
 

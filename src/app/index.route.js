@@ -9,6 +9,14 @@ export function routerConfig($routeProvider) {
         title: () => 'Employees'
       }
     })
+    .when('/', {
+      templateUrl: 'app/home/home.html',
+      controller: 'HomeController',
+      controllerAs: 'home',
+      resolve: {
+        title: () => 'Home'
+      }
+    })
     .when('/issues', {
       templateUrl: 'app/issues/issues.html',
       controller: 'IssuesController',
