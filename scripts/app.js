@@ -64,15 +64,17 @@
 
 	var _paymentsService = __webpack_require__(11);
 
-	var _analytics = __webpack_require__(12);
+	var _home = __webpack_require__(12);
 
-	var _statusbar = __webpack_require__(13);
+	var _analytics = __webpack_require__(13);
 
-	var _slideout = __webpack_require__(14);
+	var _statusbar = __webpack_require__(14);
 
-	var _firebase = __webpack_require__(15);
+	var _slideout = __webpack_require__(15);
 
-	angular.module('dashboard', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', 'ngMessages', 'ngAria', 'ngRoute', 'ui.bootstrap', 'toaster', 'firebase', 'firebase.ref', 'chart.js', 'uiGmapgoogle-maps', 'google.places', 'ngCsv']).config(_index.config).config(_index2.routerConfig).run(_index3.runBlock).constant('months', _months.months).service('EmployeesService', _employees2.EmployeesService).service('IssuesService', _issues.IssuesService).service('PaymentsService', _paymentsService.PaymentsService).controller('EmployeesController', _employees.EmployeesController).controller('IssuesController', _issues2.IssuesController).controller('AnalyticsController', _analytics.AnalyticsController).directive('slideoutMenu', _slideout.SlideoutDirective).directive('statusBar', _statusbar.StatusbarDirective);
+	var _firebase = __webpack_require__(16);
+
+	angular.module('dashboard', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', 'ngMessages', 'ngAria', 'ngRoute', 'ui.bootstrap', 'toaster', 'firebase', 'firebase.ref', 'chart.js', 'uiGmapgoogle-maps', 'google.places', 'ngCsv']).config(_index.config).config(_index2.routerConfig).run(_index3.runBlock).constant('months', _months.months).service('EmployeesService', _employees2.EmployeesService).service('IssuesService', _issues.IssuesService).service('PaymentsService', _paymentsService.PaymentsService).controller('EmployeesController', _employees.EmployeesController).controller('IssuesController', _issues2.IssuesController).controller('AnalyticsController', _analytics.AnalyticsController).controller('HomeController', _home.HomeController).directive('slideoutMenu', _slideout.SlideoutDirective).directive('statusBar', _statusbar.StatusbarDirective);
 
 	angular.module('firebase.ref', ['firebase', 'firebase.config']).service('Ref', _firebase.FirebaseRef);
 
@@ -117,6 +119,15 @@
 	    resolve: {
 	      title: function title() {
 	        return 'Employees';
+	      }
+	    }
+	  }).when('/', {
+	    templateUrl: 'app/home/home.html',
+	    controller: 'HomeController',
+	    controllerAs: 'home',
+	    resolve: {
+	      title: function title() {
+	        return 'Home';
 	      }
 	    }
 	  }).when('/issues', {
@@ -605,6 +616,22 @@
 
 	'use strict';
 
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	var HomeController = exports.HomeController = function HomeController() {
+	  _classCallCheck(this, HomeController);
+	};
+
+/***/ },
+/* 13 */
+/***/ function(module, exports) {
+
+	'use strict';
+
 	//Containers for controller dependecies
 
 	Object.defineProperty(exports, "__esModule", {
@@ -662,7 +689,7 @@
 	AnalyticsController.$inject = ['$log', 'months', 'IssuesService', 'PaymentsService'];
 
 /***/ },
-/* 13 */
+/* 14 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -762,7 +789,7 @@
 	StatusbarController.$inject = ['$scope', '$uibModal', '$route'];
 
 /***/ },
-/* 14 */
+/* 15 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -818,7 +845,7 @@
 	SlideoutController.$inject = ['$scope'];
 
 /***/ },
-/* 15 */
+/* 16 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -842,6 +869,7 @@
 angular.module('dashboard').run(['$templateCache', function($templateCache) {$templateCache.put('app/analytics/analytics.html','<div class=container-fluid><div class=row><div class=col-md-6><h3>Number of paying customers in 2016</h3><canvas id=line class="chart chart-line" chart-data=an.data chart-labels=an.barLabels></canvas></div><div class=col-md-6><h3>Issues created in 2016 by month</h3><canvas id=bar class="chart chart-bar" chart-data=an.issuesByMonth chart-labels=an.barLabels></canvas><div class=row><div class=col-md-4><p>Currently opened issues: <b>{{(an.issues | filter: \'open\').length}}</b></p></div><div class=col-md-4><p>Currently issues in progress: <b>{{(an.issues | filter: \'in progress\').length}}</b></p></div><div class=col-md-4><p>Resolved issues: <b>{{(an.issues | filter: \'resolved\').length}}</b></p></div></div></div></div></div>');
 $templateCache.put('app/employees/employees.html','<toaster-container toaster-options="{\'time-out\': 2500}"></toaster-container><div class=container-fluid><div class=row><div class=col-xs-12><button class="btn btn-success btn-raised" ng-click=employees.openAddEmployeeModal()>Add new employee</button></div></div><div class=row><div class=col-md-4><uib-accordion close-others=true><uib-accordion-group ng-repeat="city in employees.employees" heading={{city.$id}} panel-class=panel-primary><table class="table table-condensed"><thead><tr><th>Name</th><th>Position</th></tr></thead><tbody><tr ng-repeat="employee in city" ng-click=employees.select(employee)><td>{{employee.firstName}} {{employee.lastName}}</td><td>{{employee.position}}</td></tr></tbody></table></uib-accordion-group></uib-accordion></div><div class=col-md-8><div class="panel panel-primary"><div class=panel-heading><h3 class=panel-title>Employee info</h3></div><div class=panel-body><p class=lead ng-hide=employees.selectedEmployee>Please, click on employee in the list to see detailed info</p><div ng-if=employees.selectedEmployee><p><em>Name</em>: {{employees.selectedEmployee.firstName}}</p><p><em>Last Name</em>: {{employees.selectedEmployee.lastName}}</p><p><em>Position</em>: {{employees.selectedEmployee.position}}</p><div><ui-gmap-google-map center="{latitude: employees.selectedEmployee.lat, longitude: employees.selectedEmployee.lon}" zoom=14><ui-gmap-marker idkey=employees.selectedEmployee.firstName coords="{latitude: employees.selectedEmployee.lat, longitude: employees.selectedEmployee.lon}"></ui-gmap-marker></ui-gmap-google-map></div></div></div></div></div></div></div>');
 $templateCache.put('app/employees/employeesModal.html','<div class=modal-header><h3 class=modal-title>Add new employee</h3></div><div class=modal-body><form id=employeeform name=employeeform ng-submit=emc.addNewEmployee(employee)><div class=form-group><label for=first-name class="control-label control-label_required">First Name:</label><input type=text id=first-name class=form-control placeholder=Jane ng-model=employee.firstName autofocus required></div><div class=form-group><label for=last-name class="control-label control-label_required">Last Name:</label><input type=text id=last-name class=form-control placeholder=Doe ng-model=employee.lastName required></div><div class=form-group><label for=position class="control-label control-label_required">Position:</label><input type=text id=position class=form-control placeholder=accountant ng-model=employee.position requried></div><div class=form-group><label for=city class="control-label control-label_requried">City:</label><input g-places-autocomplete type=text id=city class=form-control placeholder="Mountain View" ng-model=employee.place required></div></form></div><div class=modal-footer><button class="btn btn-primary" type=submit form=employeeform>Add employee</button> <button class="btn btn-danger" type=button ng-click=emc.cancel()>Cancel</button></div>');
+$templateCache.put('app/home/home.html','<div class=container-fluid><div class=row><div class=col-xs-12><h2>Greetings, kind reviewer</h2><p>I presume you are hell tired of checking submissions of these "bunch-of-stupid-nanodegreers". So why not to lean back and watch one nice owl</p><iframe width=420 height=315 src=https://www.youtube.com/embed/zr0f7W9QLZ4 frameborder=0 allowfullscreen></iframe><p>I hope my app won\'t make you mad)</p></div></div></div>');
 $templateCache.put('app/issues/issueDetailsModal.html','<div class=panel ng-class="{\'panel-success\': im.selectedIssue.status === \'resolved\',\r\n                                      \'panel-warning\': im.selectedIssue.status === \'in progress\',\r\n                                      \'panel-primary\': im.selectedIssue.status === \'open\'}"><div class=panel-heading><h3 class=panel-title>{{im.selectedIssue.title}}</h3></div><div class=panel-body><label class=control-label>Customer:</label><p>{{im.selectedIssue.customer}} (<a ng-href=mailto:{{im.selectedIssue.customerEmail}}>{{im.selectedIssue.customerEmail}}</a>)</p><label class=control-label>Description:</label><p>{{im.selectedIssue.description}}</p><label class=control-label>Reporter:</label><p>{{im.selectedIssue.reporter}}</p><div class=row><div class=col-sm-6><label class=control-label>Created at:</label><p>{{im.selectedIssue.createdAt | date:\'longDate\'}}</p></div><div class=col-sm-6><label class=control-label>Updated at:</label><p>{{im.selectedIssue.updatedAt | date:\'longDate\'}}</p></div></div></div><div class=modal-footer><button class="btn btn-success" type=button ng-click=im.cancel()>Ok</button></div></div>');
 $templateCache.put('app/issues/issues.html','<toaster-container toaster-options="{\'time-out\': 2500}"></toaster-container><div class=container-fluid><div class=row><div class=col-xs-12><button class="btn btn-success btn-raised" ng-click=issues.openAddIssueModal()>Add new issue</button> <button class="btn btn-info btn-raised" ng-csv=issues.downloadCsv() filename=issues.csv>Download csv</button></div></div><div class=row><div class=col-xs-12><div class=form-group><label for=filterissues class=control-label>Search for issue:</label><input type=text id=filterissues class=form-control ng-model=issues.search placeholder="Search titles, statuses and repoters"></div><div class=btn-group><label class="btn btn-default" ng-model=issues.filter uib-btn-radio="" uncheckable>All</label><label class="btn btn-default" ng-model=issues.filter uib-btn-radio="\'open\'" uncheckable>Open</label><label class="btn btn-default" ng-model=issues.filter uib-btn-radio="\'in progress\'" uncheckable>In progress</label><label class="btn btn-default" ng-model=issues.filter uib-btn-radio="\'resolved\'" uncheckable>Resolved</label></div><div class=table-responsive><table class="table table-condensed table-hover"><thead><tr><th ng-click="issues.sort = issues.sort === \'title\' ? \'-title\' : \'title\'">Title <i class="fa fa-sort-asc" aria-hidden=true ng-if="issues.sort === \'-title\'"></i> <i class="fa fa-sort-desc" aria-hidden=true ng-if="issues.sort === \'title\'"></i></th><th ng-click="issues.sort = issues.sort === \'reporter\' ? \'-reporter\' : \'reporter\'">Reporter <i class="fa fa-sort-asc" aria-hidden=true ng-if="issues.sort === \'-reporter\'"></i> <i class="fa fa-sort-desc" aria-hidden=true ng-if="issues.sort === \'reporter\'"></i></th><th ng-click="issues.sort = issues.sort === \'createdAt\' ? \'-createdAt\' : \'createdAt\'">Created <i class="fa fa-sort-asc" aria-hidden=true ng-if="issues.sort === \'-createdAt\'"></i> <i class="fa fa-sort-desc" aria-hidden=true ng-if="issues.sort === \'createdAt\'"></i></th><th>Status</th></tr></thead><tbody><tr ng-repeat="issue in issues.issues | filter: issues.search | filter: issues.filter | orderBy: issues.sort" ng-click=issues.openDetailIssueModal(issue)><td>{{issue.title}}</td><td>{{issue.reporter}}</td><td>{{issue.createdAt | date: \'longDate\'}}</td><td><div class=btn-group uib-dropdown ng-click=$event.stopPropagation()><button id=single-button type=button class="btn btn-raised" ng-class="{\'btn-primary\': issue.status === \'open\',\r\n                            \'btn-warning\': issue.status === \'in progress\',\r\n                             \'btn-success\': issue.status === \'resolved\'}" uib-dropdown-toggle>{{issue.status}} <span class=caret></span></button><ul class=dropdown-menu uib-dropdown-menu role=menu aria-labelledby=single-button><li role=menuitem><a ng-click="issues.updateIssueStatus(issue, \'open\')">Open</a></li><li role=menuitem><a ng-click="issues.updateIssueStatus(issue, \'in progress\')">In progress</a></li><li role=menuitem><a ng-click="issues.updateIssueStatus(issue, \'resolved\')">Resolved</a></li></ul></div></td></tr></tbody></table></div></div></div></div>');
 $templateCache.put('app/issues/issuesModal.html','<div class=modal-header><h3 class=modal-title>Add new issue</h3></div><div class=modal-body><form id=issueform name=im.issueform ng-submit=im.addNewIssue(im.issue)><div class=form-group><label for=name class="control-label control-label_required">Customer name:</label><input type=text id=name class=form-control ng-model=im.issue.customer placeholder="Bob Marley" autofocus required></div><div class=form-group><label for=email class="control-label control-label_required">Customer email:</label><input type=email id=email class=form-control ng-model=im.issue.customerEmail placeholder=mail@domain.com required></div><div class=form-group><label for=title class="control-label control-label_required">Title:</label><input type=text id=title class=form-control ng-model=im.issue.title placeholder="I need wi-fi password" required></div><div class=form-group><label for=description class=control-label>Description:</label><textarea name=description id=description class=form-control ng-model=im.issue.description placeholder="A couple of words about the issue"></textarea></div><div class=form-group><label for=reporter class="control-label control-label_required">Reporter:</label><input type=text id=reporter class=form-control ng-model=im.issue.reporter placeholder="John Doe" required></div></form></div><div class=modal-footer><button class="btn btn-primary" type=submit form=issueform>Add issue</button> <button class="btn btn-danger" type=button ng-click=im.cancel()>Cancel</button></div>');
