@@ -1,14 +1,6 @@
 export function routerConfig($routeProvider) {
   'ngInject';
   $routeProvider
-    .when('/', {
-      templateUrl: 'app/main/main.html',
-      controller: 'MainController',
-      controllerAs: 'main',
-      resolve: {
-        title: () => 'Home'
-      }
-    })
     .when('/employees', {
       templateUrl: 'app/employees/employees.html',
       controller: 'EmployeesController',
@@ -34,6 +26,6 @@ export function routerConfig($routeProvider) {
       }
     })
     .otherwise({
-      redirectTo: '/'
+      redirectTo: '/analytics'
     });
 }

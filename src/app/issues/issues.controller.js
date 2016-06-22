@@ -55,6 +55,19 @@ export class IssuesController {
         _toaster.get(this).pop('error', 'Oops', `Something went wrong ${e}`);
       })
   }
+
+  downloadCsv(){
+    return this.issues.map(issue => {
+      return {
+        title: issue.title,
+        customer: issue.customer,
+        customerEmail: issue.customerEmail,
+        description: issue.description,
+        reporter: issue.reporter,
+        status: issue.status
+      }
+    });
+  }
 }
 
 IssuesController.$inject = ['$uibModal', 'IssuesService', 'toaster'];

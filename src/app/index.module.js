@@ -2,7 +2,6 @@ import {config} from './index.config';
 import {routerConfig} from './index.route';
 import {runBlock} from './index.run';
 import {months} from './utils/months';
-import {MainController} from './main/main.controller';
 import {EmployeesController} from './employees/employees.controller';
 import {EmployeesService} from './employees/employees.service';
 import {IssuesService} from './issues/issues.service';
@@ -28,13 +27,13 @@ angular.module('dashboard',
     'firebase.ref',
     'chart.js',
     'uiGmapgoogle-maps',
-    'google.places'
+    'google.places',
+    'ngCsv'
   ])
   .config(config)
   .config(routerConfig)
   .run(runBlock)
   .constant('months', months)
-  .controller('MainController', MainController)
   .service('EmployeesService', EmployeesService)
   .service('IssuesService', IssuesService)
   .service('PaymentsService', PaymentsService)
