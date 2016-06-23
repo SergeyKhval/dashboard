@@ -34,8 +34,18 @@
               <i class="fa fa-sort-asc" aria-hidden="true" ng-if="issues.sort === '-title'"></i>
               <i class="fa fa-sort-desc" aria-hidden="true" ng-if="issues.sort === 'title'"></i>
             </th>
+            <th ng-click="issues.sort = issues.sort === 'customer' ? '-customer' : 'customer'">
+              Customer
+              <i class="fa fa-sort-asc" aria-hidden="true" ng-if="issues.sort === '-customer'"></i>
+              <i class="fa fa-sort-desc" aria-hidden="true" ng-if="issues.sort === 'customer'"></i>
+            </th>
+            <th ng-click="issues.sort = issues.sort === 'customerEmail' ? '-customerEmail' : 'customerEmail'">
+              Customer's Email
+              <i class="fa fa-sort-asc" aria-hidden="true" ng-if="issues.sort === '-customerEmail'"></i>
+              <i class="fa fa-sort-desc" aria-hidden="true" ng-if="issues.sort === 'customerEmail'"></i>
+            </th>
             <th ng-click="issues.sort = issues.sort === 'reporter' ? '-reporter' : 'reporter'">
-              Reporter
+              Employee
               <i class="fa fa-sort-asc" aria-hidden="true" ng-if="issues.sort === '-reporter'"></i>
               <i class="fa fa-sort-desc" aria-hidden="true" ng-if="issues.sort === 'reporter'"></i>
             </th>
@@ -44,6 +54,11 @@
               <i class="fa fa-sort-asc" aria-hidden="true" ng-if="issues.sort === '-createdAt'"></i>
               <i class="fa fa-sort-desc" aria-hidden="true" ng-if="issues.sort === 'createdAt'"></i>
             </th>
+            <th ng-click="issues.sort = issues.sort === 'updatedAt' ? '-updatedAt' : 'updatedAt'">
+              Updated
+              <i class="fa fa-sort-asc" aria-hidden="true" ng-if="issues.sort === '-updatedAt'"></i>
+              <i class="fa fa-sort-desc" aria-hidden="true" ng-if="issues.sort === 'updatedAt'"></i>
+            </th>
             <th>Status</th>
           </tr>
           </thead>
@@ -51,8 +66,11 @@
           <tr ng-repeat="issue in issues.issues | filter: issues.search | filter: issues.filter | orderBy: issues.sort"
               ng-click="issues.openDetailIssueModal(issue)">
             <td>{{issue.title}}</td>
+            <td>{{issue.customer}}</td>
+            <td>{{issue.customerEmail}}</td>
             <td>{{issue.reporter}}</td>
             <td>{{issue.createdAt | date: 'longDate'}}</td>
+            <td>{{issue.updatedAt | date: 'longDate'}}</td>
             <td>
               <div class="btn-group" uib-dropdown ng-click="$event.stopPropagation()">
                 <button id="single-button" type="button" class="btn btn-raised"
