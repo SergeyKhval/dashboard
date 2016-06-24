@@ -10,7 +10,7 @@
   <div class="row">
     <div class="col-md-4">
       <uib-accordion close-others="true">
-        <uib-accordion-group ng-repeat="city in employees.employees" heading="{{city.$id}}"
+        <uib-accordion-group ng-repeat="city in employees.cities" heading="{{city.$id}}: {{city.employeesCount}} employee(s)"
                              panel-class="panel-primary">
           <table class="table table-condensed">
             <thead>
@@ -20,7 +20,8 @@
             </tr>
             </thead>
             <tbody>
-            <tr ng-repeat="employee in city" ng-click="employees.select(employee)">
+            <tr ng-repeat="employee in (employees.employees | filter: {city: city.$id})"
+                ng-click="employees.select(employee)">
               <td>{{employee.firstName}} {{employee.lastName}}</td>
               <td>{{employee.position}}</td>
             </tr>
@@ -36,22 +37,29 @@
           <h3 class="panel-title">Employee info</h3>
         </div>
         <div class="panel-body">
-          <p class="lead" ng-hide="employees.selectedEmployee">
-            Please, click on employee in the list to see detailed info
-          </p>
 
-          <div ng-if="employees.selectedEmployee">
-            <p><em>Name</em>: {{employees.selectedEmployee.firstName}}</p>
-            <p><em>Last Name</em>: {{employees.selectedEmployee.lastName}}</p>
-            <p><em>Position</em>: {{employees.selectedEmployee.position}}</p>
+          <div>
+            <div ng-if="employees.selectedEmployee">
+              <button class="btn btn-raised btn-success" ng-click="employees.selectedEmployee = false;">Back to map</button>
+              <p><em>Name</em>: {{employees.selectedEmployee.firstName}}</p>
+              <p><em>Last Name</em>: {{employees.selectedEmployee.lastName}}</p>
+              <p><em>Position</em>: {{employees.selectedEmployee.position}}</p>
+            </div>
 
-            <div>
+            <div ng-if="employees.employees">
               <ui-gmap-google-map
-                center='{latitude: employees.selectedEmployee.lat, longitude: employees.selectedEmployee.lon}'
-                zoom='14'>
+                center='employees.mapCenter'
+                zoom='employees.mapZoom'>
+
+                <ui-gmap-marker
+                  ng-repeat="employee in employees.employees"
+                  idKey='employee.firstName'
+                  coords='{latitude: employee.lat, longitude: employee.lon}'>
+                </ui-gmap-marker>
                 <ui-gmap-marker
                   idKey='employees.selectedEmployee.firstName'
-                  coords='{latitude: employees.selectedEmployee.lat, longitude: employees.selectedEmployee.lon}'>
+                  coords='{latitude: employees.selectedEmployee.lat, longitude: employees.selectedEmployee.lon}'
+                  ng-if="employees.selectedEmployee">
                 </ui-gmap-marker>
               </ui-gmap-google-map>
             </div>
