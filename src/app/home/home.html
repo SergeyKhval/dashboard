@@ -1,11 +1,30 @@
 <div class="container-fluid">
   <div class="row">
-    <div class="col-xs-12">
-      <h2>Greetings, kind reviewer</h2>
-      <p>I presume you are hell tired of checking submissions of these "bunch-of-stupid-nanodegreers". So why not to
-        lean back and watch one nice owl</p>
-      <iframe width="420" height="315" src="https://www.youtube.com/embed/zr0f7W9QLZ4" frameborder="0" allowfullscreen></iframe>
-      <p>I hope my app won't make you mad)</p>
+    <div class="col-md-6"></div>
+    <div class="col-md-6">
+      <div class="panel panel-success">
+        <div class="panel-heading">
+          <h2 class="panel-title">Changelog</h2>
+        </div>
+        <div class="panel-body">
+          <ul class="list-unstyled">
+            <li ng-repeat="commit in home.commits">
+
+              <div class="commit" style="clear: both;">
+                <div class="commit__avatar" style="float:left;width:64px;height:64px; ">
+                  <img ng-src="{{commit.committer.avatar_url}}" class="img-responsive img-thumbnail">
+                </div>
+                <div class="commit__info">
+                  <p>By <a ng-href="{{commit.committer.html_url}}">{{commit.committer.login}}</a> on {{commit.commit.author.date | date: 'short'}}</p>
+                  <p>{{commit.commit.message.substr(0, 150)}}</p>
+                  <p><a ng-href="{{commit.html_url}}">See on github</a></p>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+
     </div>
   </div>
 </div>
