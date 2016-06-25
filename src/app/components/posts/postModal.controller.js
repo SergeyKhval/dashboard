@@ -16,8 +16,6 @@ export default class PostsModalController {
 
 
   addPost(post) {
-    console.log(post);
-
     post.createdAt = Firebase.ServerValue.TIMESTAMP;
 
     return _postsService.get(this).addPost(post)
