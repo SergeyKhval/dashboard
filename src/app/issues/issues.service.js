@@ -25,7 +25,7 @@ export class IssuesService {
       status: 'open'
     };
 
-    return _firebaseArray.get(this)(_issuesRef.get(this)).$add(issueObj);
+    return this.issues.$add(issueObj);
   }
 }
 

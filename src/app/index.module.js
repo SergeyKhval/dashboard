@@ -5,6 +5,8 @@ import {months} from './utils/months';
 import {EmployeesController} from './employees/employees.controller';
 import {EmployeesService} from './employees/employees.service';
 import {IssuesService} from './issues/issues.service';
+import {PostsService} from './components/posts/posts.service';
+
 import {GithubService} from './components/github/github.service';
 import {IssuesController} from './issues/issues.controller';
 import {PaymentsService} from './payments/paymentsService';
@@ -40,6 +42,7 @@ angular.module('dashboard',
   .service('IssuesService', IssuesService)
   .service('PaymentsService', PaymentsService)
   .service('GithubService', GithubService)
+  .service('PostsService', PostsService)
   .controller('EmployeesController', EmployeesController)
   .controller('IssuesController', IssuesController)
   .controller('AnalyticsController', AnalyticsController)

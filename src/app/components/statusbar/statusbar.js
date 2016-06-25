@@ -1,6 +1,7 @@
 'use strict';
 import EmployeesModalController from '../../employees/employeesModal.controller';
 import IssuesModalController from '../../issues/issuesModal.controller';
+import PostsModalController from '../../components/posts/postModal.controller';
 
 const _scope = new WeakMap();
 const _uibModal = new WeakMap();
@@ -60,6 +61,14 @@ class StatusbarController {
           return null;
         }
       }
+    });
+  }
+
+  openAddPostModal() {
+    _uibModal.get(this).open({
+      templateUrl: 'app/components/posts/postModal.html',
+      controller: PostsModalController,
+      controllerAs: 'pm'
     });
   }
 }
