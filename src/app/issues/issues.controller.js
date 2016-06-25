@@ -68,6 +68,10 @@ export class IssuesController {
       }
     });
   }
+
+  exportCSV(){
+    console.log('exported');
+  }
 }
 
 IssuesController.$inject = ['$uibModal', 'IssuesService', 'toaster'];
