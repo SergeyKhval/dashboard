@@ -19,6 +19,11 @@ class SlideoutController {
 
     this.menuItems = [
       {
+        title: 'Home',
+        icon: 'fa-home',
+        route: '#/'
+      },
+      {
         title: 'Analytics',
         icon: 'fa-bar-chart',
         route: '#/analytics'

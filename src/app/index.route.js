@@ -34,6 +34,6 @@ export function routerConfig($routeProvider) {
       }
     })
     .otherwise({
-      redirectTo: '/analytics'
+      redirectTo: '/'
     });
 }

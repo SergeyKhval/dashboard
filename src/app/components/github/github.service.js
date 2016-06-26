@@ -4,14 +4,14 @@ const _http = new WeakMap();
 
 export class GithubService {
   constructor($http) {
+    _http.set(this, $http);
+
     this.settings = {
       rootApi: 'https://api.github.com',
       user: 'SergeyKhval',
       repo: 'dashboard',
       commitsEndpoint: 'commits'
     };
-
-    _http.set(this, $http);
   }
 
   getCommits() {

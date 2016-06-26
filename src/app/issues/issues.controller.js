@@ -14,11 +14,10 @@ export class IssuesController {
     _toaster.set(this, toaster);
 
     this.issues = _issuesService.get(this).issues;
-
     this.search = '';
     this.filter = '';
     this.sort = 'title';
-    this.error = 'test';
+    this.error = '';
 
     //We have to set this function in the constructor
     //If we store it in the prototype then we lose context during fn call
