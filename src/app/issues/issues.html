@@ -15,6 +15,9 @@
 
   <div class="row">
     <div class="col-xs-12">
+      <p ng-if="issues.error" class="bg-danger">
+        {{issues.error}}
+      </p>
 
       <div class="form-group">
         <label for="filterissues" class="control-label">Search for issue:</label>
